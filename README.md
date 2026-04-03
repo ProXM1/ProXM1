@@ -27,22 +27,6 @@ This project was built strictly for speed, zero-latency loading, and frictionles
 *   **Class/Role:** Duelist Main
 *   **Server Region:** NA-East / Canada
 
-## 🚀 Deployment Instructions
-
-To deploy this site on your own GitHub account:
-
-1.  **Fork or Clone** this repository.
-2.  Navigate to the repository **Settings** > **Pages**.
-3.  Under **Build and deployment**, set the source to **Deploy from a branch**.
-4.  Select your `main` branch and the `/ (root)` folder, then click **Save**.
-5.  GitHub will generate your live URL (usually `https://yourusername.github.io/proxm1`).
-
-## 🛠 Configuration
-
-To customize this hub for your live streams:
-*   Open `index.html`.
-*   Locate the `[ TWITCH PLAYER EMBED GOES HERE ]` placeholder.
-*   Uncomment the `<iframe>` tag below it and replace `YOUR_CHANNEL` with your actual Twitch handle to enable the live player.
 
 ---
 `© [CURRENT_YEAR] PROXM1 // ALL SYSTEMS NOMINAL.`

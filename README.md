@@ -4,7 +4,7 @@
 ![Deployment: GitHub Pages](https://img.shields.io/badge/Deployment-GitHub_Pages-B026FF?style=for-the-badge&logo=github)
 ![Tech: Tailwind CSS](https://img.shields.io/badge/Tech-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-Welcome to the official frontend repository for **ProXM1**—an elite, Vanguard-status Marvel Rivals Duelist from NA-East (Canada). 
+Welcome to the official frontend repository for **ProXM1**—.
 
 This repository houses the source code for ProXM1's digital portfolio and community hub. It is designed to be a lightweight, high-converting static single-page application (SPA) that merges a cyberpunk/terminal aesthetic with high-voltage comic book energy.
 
@@ -21,7 +21,6 @@ This project was built strictly for speed, zero-latency loading, and frictionles
 
 > *"Synergy isn't a game mechanic. It's an execution standard."*
 
-Hailing from the Great White North, ProXM1 operates at the highest echelons of Marvel Rivals. Known for breaking the Strategist meta and executing flawless Duelist mechanics, this site serves as the central command for their Vanguard community. 
 
 *   **Steam ID:** [ProXM1](https://steamcommunity.com/id/ProXM1)
 *   **Primary Title:** Marvel Rivals

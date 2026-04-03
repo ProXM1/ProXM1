@@ -1,16 +1,49 @@
-## Hi there 👋
+# >_PROXM1 // OFFICIAL DOMAIN
 
-<!--
-**ProXM1/ProXM1** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+![Status: Operational](https://img.shields.io/badge/Status-Operational-00FF41?style=for-the-badge&logo=opslevel&logoColor=obsidian)
+![Deployment: GitHub Pages](https://img.shields.io/badge/Deployment-GitHub_Pages-B026FF?style=for-the-badge&logo=github)
+![Tech: Tailwind CSS](https://img.shields.io/badge/Tech-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-Here are some ideas to get you started:
+Welcome to the official frontend repository for **ProXM1**—an elite, Vanguard-status Marvel Rivals Duelist from NA-East (Canada). 
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+This repository houses the source code for ProXM1's digital portfolio and community hub. It is designed to be a lightweight, high-converting static single-page application (SPA) that merges a cyberpunk/terminal aesthetic with high-voltage comic book energy.
+
+## 📁 Architecture & Features
+
+This project was built strictly for speed, zero-latency loading, and frictionless conversion.
+
+*   **Zero-Dependency Build:** A pure `index.html` file utilizing CDN-delivered Tailwind CSS for rapid styling. No node modules, no build steps required.
+*   **Terminal Aesthetic:** Custom CSS keyframes handling CRT-monitor scanlines, glitch hover states, and dynamic typewriter effects.
+*   **Chrona-Web Media Grid:** Asymmetrical, comic-panel-inspired layout ready for Twitch iframe embeds and YouTube VOD highlights.
+*   **Deploy-Ready:** Specifically engineered to be hosted on GitHub Pages for 100% free, high-bandwidth hosting.
+
+## 🧠 The Persona: ProXM1
+
+> *"Synergy isn't a game mechanic. It's an execution standard."*
+
+Hailing from the Great White North, ProXM1 operates at the highest echelons of Marvel Rivals. Known for breaking the Strategist meta and executing flawless Duelist mechanics, this site serves as the central command for their Vanguard community. 
+
+*   **Steam ID:** [ProXM1](https://steamcommunity.com/id/ProXM1)
+*   **Primary Title:** Marvel Rivals
+*   **Class/Role:** Duelist Main
+*   **Server Region:** NA-East / Canada
+
+## 🚀 Deployment Instructions
+
+To deploy this site on your own GitHub account:
+
+1.  **Fork or Clone** this repository.
+2.  Navigate to the repository **Settings** > **Pages**.
+3.  Under **Build and deployment**, set the source to **Deploy from a branch**.
+4.  Select your `main` branch and the `/ (root)` folder, then click **Save**.
+5.  GitHub will generate your live URL (usually `https://yourusername.github.io/proxm1`).
+
+## 🛠 Configuration
+
+To customize this hub for your live streams:
+*   Open `index.html`.
+*   Locate the `[ TWITCH PLAYER EMBED GOES HERE ]` placeholder.
+*   Uncomment the `<iframe>` tag below it and replace `YOUR_CHANNEL` with your actual Twitch handle to enable the live player.
+
+---
+`© [CURRENT_YEAR] PROXM1 // ALL SYSTEMS NOMINAL.`

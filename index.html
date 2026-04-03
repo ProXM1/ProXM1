@@ -1,265 +1,558 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProXM1 | Omega-Level Threat</title>
-    
-    <!-- Google Fonts -->
+    <title>ProXM1 | Command Center</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS (via CDN for immediate GitHub Pages compatibility) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-base: #07020d;
+            --bg-panel: rgba(15, 5, 25, 0.85);
+            --neon-blue: #00f3ff;
+            --neon-purple: #b500ff;
+            --text-main: #e2dcf2;
+            --text-muted: #8b7ca6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: var(--neon-purple) var(--bg-base);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- HERO SECTION & PARTICLES --- */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 2px solid var(--neon-purple);
+            box-shadow: 0 5px 30px rgba(181, 0, 255, 0.2);
+        }
+
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            pointer-events: none; /* Let mouse interact with canvas behind */
+        }
+
+        .hero-title {
+            font-size: 6rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 40px var(--neon-purple);
+            margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            letter-spacing: 5px;
+        }
+
+        /* --- LEVEL SELECT (CASE STUDIES) --- */
+        #missions {
+            padding: 6rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px rgba(181, 0, 255, 0.5);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .level-card {
+            background: var(--bg-panel);
+            border: 1px solid rgba(181, 0, 255, 0.3);
+            border-left: 4px solid var(--neon-purple);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .level-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.15);
+            transform: translateX(10px);
+        }
+
+        .level-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .level-title {
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        .level-status {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--neon-purple);
+            border: 1px solid var(--neon-purple);
+            padding: 5px 15px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .level-card.unlocked .level-status {
+            color: var(--neon-blue);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+        }
+
+        .progress-container {
+            margin-top: 1.5rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .progress-track {
+            height: 6px;
+            background: #1a0f2e;
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-blue));
+            box-shadow: 0 0 10px var(--neon-blue);
+            transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);
+        }
+
+        /* Video Trailer Expansion */
+        .trailer-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.1, 0.8, 0.2, 1), margin-top 0.8s;
+            opacity: 0;
+        }
+
+        .level-card.unlocked .trailer-wrapper {
+            max-height: 500px;
+            margin-top: 2rem;
+            opacity: 1;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 350px;
+            background: #000;
+            border: 1px solid var(--neon-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-blue);
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Scanline effect for video placeholder */
+        .video-placeholder::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .level-desc {
+            margin-top: 1rem;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <canvas id="canvas-container"></canvas>
+        <div class="hero-content">
+            <h1 class="hero-title">ProXM1</h1>
+            <div class="hero-subtitle">ESTABLISHED 2026 // GLOBAL RANKING: GRANDMASTER</div>
+        </div>
+    </section>
+
+    <!-- Case Studies / Mission Log -->
+    <section id="missions">
+        <div class="section-header">
+            <h2>Mission Archives</h2>
+            <p>Select a level to decrypt case study data.</p>
+        </div>
+
+        <!-- Level 1 -->
+        <div class="level-card" onclick="unlockLevel(this)">
+            <div class="level-header">
+                <h3 class="level-title">LVL 01: The E-Sports Rebrand</h3>
+                <span class="level-status">LOCKED</span>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Decryption Progress</span>
+                    <span class="progress-percent">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="trailer-wrapper">
+    <div class="video-placeholder">
+        <!-- The src is intentionally left blank to prevent it from playing before unlocked -->
+        <iframe 
+            id="rickroll-frame"
+            width="100%" 
+            height="100%" 
+            src="" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen
+            style="position: relative; z-index: 1;">
+        </iframe>
+    </div>
+   
+    <p class="level-desc">I dare you.</p>
+</div>
+        </div>
+
+        <div id="level-2-card" class="level-card" onclick="unlockLevel(this)">
+    <div class="level-header">
+        <h3 class="level-title">LVL 02: Hardware Collab Launch</h3>
+        <span class="level-status">LOCKED</span>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-label">
+            <span>Decryption Progress</span>
+            <span class="progress-percent">0%</span>
+        </div>
+        <div class="progress-track">
+            <div class="progress-fill"></div>
+        </div>
+    </div>
+
+    <div class="trailer-wrapper">
+        <div class="video-placeholder">
+            <img id="level2-image" src="https://images.steamusercontent.com/ugc/1284039015926480821/7D1DCC71B23E05AA7AB8648A684762DA9196A49B/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" alt="Level 2 Content" style="display: none; width: 100%; height: 100%; object-fit: contain; object-position: center; position: relative; z-index: 1;">
+            
+            <span id="level2-placeholder-text">▶ DECRYPT DATA (SIMULATION)</span>
+        </div>
+        
+    </div>
+</div>
+        </div>
+
+    </section>
+
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        obsidian: '#050505',
-                        galacta: '#B026FF',
-                        terminal: '#00FF41',
-                        darkgray: '#111111'
-                    },
-                    fontFamily: {
-                        mono: ['JetBrains Mono', 'monospace'],
-                        heading: ['Oswald', 'sans-serif'],
+        /* --- PARTICLE SYSTEM LOGIC --- */
+        const canvas = document.getElementById('canvas-container');
+        const ctx = canvas.getContext('2d');
+        
+        let particlesArray = [];
+        let mouse = {
+            x: null,
+            y: null,
+            radius: 150
+        }
+
+        // Handle Resize
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        });
+
+        // Mouse Events
+        window.addEventListener('mousemove', function(event) {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+
+        window.addEventListener('mouseout', function() {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+            }
+
+            update() {
+                // Check canvas bounds
+                if(this.x > canvas.width || this.x < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if(this.y > canvas.height || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
+
+                // Mouse interactivity (repel effect)
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                let forceDirectionX = dx / distance;
+                let forceDirectionY = dy / distance;
+                
+                // Max distance, past that the force is 0
+                let maxDistance = mouse.radius;
+                let force = (maxDistance - distance) / maxDistance;
+                
+                // If we went below zero, set it to zero.
+                if (force < 0) force = 0;
+
+                let directionX = (forceDirectionX * force * this.density);
+                let directionY = (forceDirectionY * force * this.density);
+
+                if (distance < mouse.radius) {
+                    this.x -= directionX;
+                    this.y -= directionY;
+                } else {
+                    if (this.x !== this.baseX) {
+                        let dx = this.x - this.baseX;
+                        this.x -= dx/10;
+                    }
+                    if (this.y !== this.baseY) {
+                        let dy = this.y - this.baseY;
+                        this.y -= dy/10;
+                    }
+                }
+
+                this.x += this.directionX;
+                this.y += this.directionY;
+
+                this.draw();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            // Limit particles for performance
+            if(numberOfParticles > 200) numberOfParticles = 200;
+
+            const colors = ['#00f3ff', '#b500ff', '#4a00e0'];
+
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 1;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * 2) - 1;
+                let directionY = (Math.random() * 2) - 1;
+                let color = colors[Math.floor(Math.random() * colors.length)];
+
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        // Connection lines between particles
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                                 + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width/7) * (canvas.height/7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = 'rgba(0, 243, 255,' + opacityValue + ')';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
                     }
                 }
             }
         }
-    </script>
 
-    <!-- Custom CSS for Glitch Effects & Terminal Aesthetic -->
-    <style>
-        body {
-            background-color: #050505;
-            color: white;
-            /* Subtle scanline background */
-            background-image: linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-
-        /* Glitch Button Hover Effect */
-        .glitch-btn {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.2s ease;
-        }
-        .glitch-btn:hover {
-            box-shadow: 0 0 15px #00FF41;
-            text-shadow: 2px 0 #B026FF, -2px 0 #00FF41;
-        }
-        
-        /* Blinking Cursor for Typewriter */
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background-color: #00FF41;
-            vertical-align: middle;
-            animation: blink 1s step-end infinite;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Ascii Grid Overlay for Synergy Section */
-        .ascii-bg {
-            background: repeating-linear-gradient(
-                45deg,
-                #111 0px,
-                #111 2px,
-                transparent 2px,
-                transparent 8px
-            );
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #050505; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #B026FF; 
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00FF41; 
-        }
-    </style>
-</head>
-<body class="font-mono overflow-x-hidden">
-
-    <!-- Sticky Header -->
-    <nav class="fixed w-full z-50 top-0 border-b border-terminal/20 bg-obsidian/90 backdrop-blur-sm">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-terminal font-bold text-xl tracking-tighter">
-                >_PROXM1
-            </div>
-            <div class="hidden md:flex space-x-8 text-sm text-gray-400">
-                <a href="#intel" class="hover:text-terminal transition-colors">[ INTEL ]</a>
-                <a href="#network" class="hover:text-galacta transition-colors">[ NETWORK ]</a>
-            </div>
-            <a href="https://www.twitch.tv/proxm1" target="_blank" class="border border-terminal text-terminal px-4 py-1 text-sm hover:bg-terminal hover:text-obsidian transition-all font-bold uppercase">
-                Live Status
-            </a>
-        </div>
-    </nav>
-
-    <!-- SECTION 1: THE HERO -->
-    <header class="h-screen flex flex-col justify-center items-center text-center px-4 relative pt-20">
-        <!-- Parallax/Background Placeholder (Update src with your image) -->
-        <div class="absolute inset-0 z-[-1] opacity-20 bg-[url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center mix-blend-luminosity"></div>
-        
-        <div class="max-w-4xl w-full text-left">
-            <!-- Typewriter Container -->
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 uppercase tracking-wider h-32 md:h-24">
-                <span id="typewriter" class="text-terminal"></span><span class="cursor"></span>
-            </h1>
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0,0,innerWidth, innerHeight);
             
-            <h2 class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 font-mono border-l-2 border-galacta pl-4">
-                The North's premier Duelist. High-voltage Marvel Rivals gameplay, shattered metas, and unfiltered tactical breakdowns.
-            </h2>
-            
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="https://www.twitch.tv/proxm1" class="glitch-btn bg-terminal text-obsidian font-bold text-lg px-8 py-3 uppercase text-center w-full sm:w-auto">
-                    [ EXECUTE: WATCH_LIVE ]
-                </a>
-                <a href="https://www.youtube.com/@ProXM1" class="border border-galacta text-galacta font-bold text-lg px-8 py-3 uppercase hover:bg-galacta hover:text-white transition-all text-center w-full sm:w-auto">
-                    [ ACCESS_ARCHIVES ]
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- SECTION 2: THE CHRONA-WEB (Content) -->
-    <section id="intel" class="py-24 px-6 bg-darkgray/50 border-y border-terminal/10">
-        <div class="max-w-7xl mx-auto">
-            <h3 class="text-terminal text-2xl font-bold mb-8">>> FETCHING_LATEST_INTEL...</h3>
-            
-            <!-- Comic/Hacked Grid Layout -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Twitch Embed (Takes up 2 columns on desktop) -->
-                <div class="md:col-span-2 aspect-video bg-obsidian border border-terminal/30 relative group">
-                    <div class="absolute inset-0 flex justify-center items-center text-gray-500 z-0">
-                        [ TWITCH PLAYER EMBED GOES HERE ]
-                    </div>
-                    <!-- Replace with actual Twitch iframe -->
-                    <!-- <iframe src="https://player.twitch.tv/?channel=YOUR_CHANNEL&parent=proxm1.github.io" frameborder="0" allowfullscreen="true" scrolling="no" class="w-full h-full relative z-10"></iframe> -->
-                </div>
-                
-                <!-- YouTube VODs -->
-                <div class="flex flex-col gap-6">
-                    <a href="#" class="block aspect-video bg-obsidian border border-galacta/30 hover:border-galacta transition-colors relative group overflow-hidden">
-                        <div class="absolute inset-0 bg-galacta/10 group-hover:bg-galacta/0 transition-colors"></div>
-                        <div class="absolute bottom-0 w-full bg-obsidian/90 p-2 text-xs border-t border-galacta/30">
-                            > LOG_01: Breaking the Strategist Meta
-                        </div>
-                    </a>
-                    <a href="#" class="block aspect-video bg-obsidian border border-galacta/30 hover:border-galacta transition-colors relative group overflow-hidden">
-                        <div class="absolute inset-0 bg-galacta/10 group-hover:bg-galacta/0 transition-colors"></div>
-                        <div class="absolute bottom-0 w-full bg-obsidian/90 p-2 text-xs border-t border-galacta/30">
-                            > LOG_02: Maximum Synergies Explained
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 3: SYNERGY HUB (Stats & Proof) -->
-    <section id="network" class="py-24 px-6 relative ascii-bg">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div class="w-full md:w-1/2">
-                <div class="w-64 h-64 border-4 border-galacta rounded-full mx-auto relative overflow-hidden shadow-[0_0_30px_rgba(176,38,255,0.3)]">
-                    <!-- Avatar Placeholder -->
-                    <div class="absolute inset-0 flex justify-center items-center text-galacta font-heading text-4xl">
-                        PROXM1
-                    </div>
-                </div>
-            </div>
-            <div class="w-full md:w-1/2 text-left space-y-6">
-                <h3 class="text-3xl font-heading uppercase text-white">Synergy isn't a mechanic.<br><span class="text-galacta">It's an execution standard.</span></h3>
-                <p class="text-gray-400">Join a network built on precision. No noise, just optimal pathing and Omega-level gameplay.</p>
-                
-                <div class="grid grid-cols-2 gap-4 pt-4 font-mono text-sm">
-                    <div class="border border-terminal/20 p-4 bg-obsidian">
-                        <div class="text-terminal mb-1">LEVEL:</div>
-                        <div class="text-2xl font-bold">109+</div>
-                    </div>
-                    <div class="border border-terminal/20 p-4 bg-obsidian">
-                        <div class="text-terminal mb-1">STATUS:</div>
-                        <div class="text-xl font-bold uppercase text-galacta">Vanguard</div>
-                    </div>
-                    <div class="border border-terminal/20 p-4 bg-obsidian col-span-2">
-                        <div class="text-terminal mb-1">SERVER_REGION:</div>
-                        <div class="text-lg">NA-East // Canada</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-terminal/30 bg-obsidian py-12 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-gray-500 text-sm">
-                © <span id="year"></span> PROXM1 // ALL SYSTEMS NOMINAL.
-            </div>
-            
-            <div class="flex gap-6">
-                <a href="#" class="text-gray-500 hover:text-galacta transition-colors">[ X/TWITTER ]</a>
-                <a href="https://steamcommunity.com/id/ProXM1" target="_blank" class="text-gray-500 hover:text-terminal transition-colors">[ STEAM ]</a>
-                <a href="#" class="text-gray-500 hover:text-galacta transition-colors">[ DISCORD ]</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Typewriter Script -->
-    <script>
-        // Dynamic Year
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Typewriter Effect Logic
-        const textToType = "> ./run_profile.exe<br>> INITIALIZING OMEGA-LEVEL THREAT...";
-        const typewriterElement = document.getElementById('typewriter');
-        let index = 0;
-        let isTag = false;
-        let currentHTML = "";
-
-        function type() {
-            if (index < textToType.length) {
-                const char = textToType.charAt(index);
-                
-                // Handle HTML tags (like <br>) so they print instantly rather than char-by-char
-                if (char === '<') isTag = true;
-                
-                currentHTML += char;
-                typewriterElement.innerHTML = currentHTML;
-                
-                if (char === '>') isTag = false;
-                
-                index++;
-                
-                // Randomize typing speed slightly for realism
-                let typingSpeed = isTag ? 0 : Math.random() * 50 + 30;
-                
-                // Add a pause after the first line
-                if (textToType.substring(index - 4, index) === "<br>") {
-                    typingSpeed = 800;
-                }
-                
-                setTimeout(type, typingSpeed);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
             }
+            connect();
         }
 
-        // Start typing effect after a short delay
-        setTimeout(type, 500);
+        // Initialization
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initParticles();
+        animate();
+
+
+/* --- LEVEL UNLOCK LOGIC --- */
+function unlockLevel(cardElement) {
+    // Prevent re-triggering if already unlocked
+    if (cardElement.classList.contains('unlocked')) return;
+
+    const progressBar = cardElement.querySelector('.progress-fill');
+    const percentText = cardElement.querySelector('.progress-percent');
+    const statusText = cardElement.querySelector('.level-status');
+    
+    // Add unlocked class to trigger CSS transitions
+    cardElement.classList.add('unlocked');
+    
+    // Trigger Progress Bar
+    setTimeout(() => {
+        progressBar.style.width = '100%';
+        statusText.innerText = 'DECRYPTING...';
+        
+        // Animate the percentage number
+        let count = 0;
+        let interval = setInterval(() => {
+            count += 2; // Speed of counting
+            if(count > 100) count = 100;
+            percentText.innerText = count + '%';
+            
+            if(count >= 100) {
+                clearInterval(interval);
+                statusText.innerText = 'UNLOCKED';
+                
+                // AUTOPLAY TRIGGER: Inject the YouTube URL with autoplay enabled
+                const iframe = cardElement.querySelector('#rickroll-frame');
+                if(iframe && !iframe.src) {
+                    // ?autoplay=1 forces the video to start immediately
+                    iframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=1&rel=0";
+                }
+            }
+        }, 25);
+    }, 100);
+}
+/* --- LEVEL UNLOCK LOGIC --- */
+function unlockLevel(cardElement) {
+    // Prevent re-triggering if already unlocked
+    if (cardElement.classList.contains('unlocked')) return;
+
+    const progressBar = cardElement.querySelector('.progress-fill');
+    const percentText = cardElement.querySelector('.progress-percent');
+    const statusText = cardElement.querySelector('.level-status');
+    
+    // Add unlocked class to trigger CSS transitions
+    cardElement.classList.add('unlocked');
+    
+    // Trigger Progress Bar
+    setTimeout(() => {
+        progressBar.style.width = '100%';
+        statusText.innerText = 'DECRYPTING...';
+        
+        // Animate the percentage number
+        let count = 0;
+        let interval = setInterval(() => {
+            count += 2; // Speed of counting
+            if(count > 100) count = 100;
+            percentText.innerText = count + '%';
+            
+            if(count >= 100) {
+                clearInterval(interval);
+                statusText.innerText = 'UNLOCKED';
+                
+                // --- LEVEL 2 SPECIFIC IMAGE REVEAL LOGIC ---
+                // Check if this is the Level 2 card using its ID
+                if (cardElement.id === 'level-2-card') {
+                    // Find the image and placeholder elements WITHIN this specific card
+                    const level2Image = cardElement.querySelector('#level2-image');
+                    const level2PlaceholderText = cardElement.querySelector('#level2-placeholder-text');
+                    
+                    if (level2Image && level2PlaceholderText) {
+                        // Reveal the image and hide the placeholder text instantly
+                        level2Image.style.display = 'block';
+                        level2PlaceholderText.style.display = 'none';
+                    }
+                }
+                // (You can add similar conditional logic for other levels if needed)
+            }
+        }, 25);
+    }, 100);
+}
     </script>
 </body>
 </html>

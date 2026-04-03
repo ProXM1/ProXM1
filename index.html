@@ -236,80 +236,11 @@
         <canvas id="canvas-container"></canvas>
         <div class="hero-content">
             <h1 class="hero-title">ProXM1</h1>
-            <div class="hero-subtitle">ESTABLISHED 2026 // GLOBAL RANKING: GRANDMASTER</div>
+            <div class="hero-subtitle">ESTABLISHED 1992 // GLOBAL RANKING: GRANDMASTER</div>
         </div>
     </section>
 
-    <!-- Case Studies / Mission Log -->
-    <section id="missions">
-        <div class="section-header">
-            <h2>Mission Archives</h2>
-            <p>Select a level to decrypt case study data.</p>
-        </div>
-
-        <!-- Level 1 -->
-        <div class="level-card" onclick="unlockLevel(this)">
-            <div class="level-header">
-                <h3 class="level-title">LVL 01: The E-Sports Rebrand</h3>
-                <span class="level-status">LOCKED</span>
-            </div>
-            
-            <div class="progress-container">
-                <div class="progress-label">
-                    <span>Decryption Progress</span>
-                    <span class="progress-percent">0%</span>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill"></div>
-                </div>
-            </div>
-
-            <div class="trailer-wrapper">
-    <div class="video-placeholder">
-        <!-- The src is intentionally left blank to prevent it from playing before unlocked -->
-        <iframe 
-            id="rickroll-frame"
-            width="100%" 
-            height="100%" 
-            src="" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen
-            style="position: relative; z-index: 1;">
-        </iframe>
-    </div>
-   
-    <p class="level-desc">I dare you.</p>
-</div>
-        </div>
-
-        <div id="level-2-card" class="level-card" onclick="unlockLevel(this)">
-    <div class="level-header">
-        <h3 class="level-title">LVL 02: Hardware Collab Launch</h3>
-        <span class="level-status">LOCKED</span>
-    </div>
-    
-    <div class="progress-container">
-        <div class="progress-label">
-            <span>Decryption Progress</span>
-            <span class="progress-percent">0%</span>
-        </div>
-        <div class="progress-track">
-            <div class="progress-fill"></div>
-        </div>
-    </div>
-
-    <div class="trailer-wrapper">
-        <div class="video-placeholder">
-            <img id="level2-image" src="https://images.steamusercontent.com/ugc/1284039015926480821/7D1DCC71B23E05AA7AB8648A684762DA9196A49B/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" alt="Level 2 Content" style="display: none; width: 100%; height: 100%; object-fit: contain; object-position: center; position: relative; z-index: 1;">
-            
-            <span id="level2-placeholder-text">▶ DECRYPT DATA (SIMULATION)</span>
-        </div>
-        
-    </div>
-</div>
-        </div>
+    <
 
     </section>
 
@@ -469,90 +400,37 @@
         animate();
 
 
-/* --- LEVEL UNLOCK LOGIC --- */
-function unlockLevel(cardElement) {
-    // Prevent re-triggering if already unlocked
-    if (cardElement.classList.contains('unlocked')) return;
+        /* --- LEVEL UNLOCK LOGIC --- */
+        function unlockLevel(cardElement) {
+            // Prevent re-triggering if already unlocked
+            if (cardElement.classList.contains('unlocked')) return;
 
-    const progressBar = cardElement.querySelector('.progress-fill');
-    const percentText = cardElement.querySelector('.progress-percent');
-    const statusText = cardElement.querySelector('.level-status');
-    
-    // Add unlocked class to trigger CSS transitions
-    cardElement.classList.add('unlocked');
-    
-    // Trigger Progress Bar
-    setTimeout(() => {
-        progressBar.style.width = '100%';
-        statusText.innerText = 'DECRYPTING...';
-        
-        // Animate the percentage number
-        let count = 0;
-        let interval = setInterval(() => {
-            count += 2; // Speed of counting
-            if(count > 100) count = 100;
-            percentText.innerText = count + '%';
+            const progressBar = cardElement.querySelector('.progress-fill');
+            const percentText = cardElement.querySelector('.progress-percent');
+            const statusText = cardElement.querySelector('.level-status');
             
-            if(count >= 100) {
-                clearInterval(interval);
-                statusText.innerText = 'UNLOCKED';
-                
-                // AUTOPLAY TRIGGER: Inject the YouTube URL with autoplay enabled
-                const iframe = cardElement.querySelector('#rickroll-frame');
-                if(iframe && !iframe.src) {
-                    // ?autoplay=1 forces the video to start immediately
-                    iframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=1&rel=0";
-                }
-            }
-        }, 25);
-    }, 100);
-}
-/* --- LEVEL UNLOCK LOGIC --- */
-function unlockLevel(cardElement) {
-    // Prevent re-triggering if already unlocked
-    if (cardElement.classList.contains('unlocked')) return;
-
-    const progressBar = cardElement.querySelector('.progress-fill');
-    const percentText = cardElement.querySelector('.progress-percent');
-    const statusText = cardElement.querySelector('.level-status');
-    
-    // Add unlocked class to trigger CSS transitions
-    cardElement.classList.add('unlocked');
-    
-    // Trigger Progress Bar
-    setTimeout(() => {
-        progressBar.style.width = '100%';
-        statusText.innerText = 'DECRYPTING...';
-        
-        // Animate the percentage number
-        let count = 0;
-        let interval = setInterval(() => {
-            count += 2; // Speed of counting
-            if(count > 100) count = 100;
-            percentText.innerText = count + '%';
+            // Add unlocked class to trigger CSS transitions
+            cardElement.classList.add('unlocked');
             
-            if(count >= 100) {
-                clearInterval(interval);
-                statusText.innerText = 'UNLOCKED';
+            // Trigger Progress Bar
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+                statusText.innerText = 'DECRYPTING...';
                 
-                // --- LEVEL 2 SPECIFIC IMAGE REVEAL LOGIC ---
-                // Check if this is the Level 2 card using its ID
-                if (cardElement.id === 'level-2-card') {
-                    // Find the image and placeholder elements WITHIN this specific card
-                    const level2Image = cardElement.querySelector('#level2-image');
-                    const level2PlaceholderText = cardElement.querySelector('#level2-placeholder-text');
+                // Animate the percentage number
+                let count = 0;
+                let interval = setInterval(() => {
+                    count += 2; // Speed of counting
+                    if(count > 100) count = 100;
+                    percentText.innerText = count + '%';
                     
-                    if (level2Image && level2PlaceholderText) {
-                        // Reveal the image and hide the placeholder text instantly
-                        level2Image.style.display = 'block';
-                        level2PlaceholderText.style.display = 'none';
+                    if(count >= 100) {
+                        clearInterval(interval);
+                        statusText.innerText = 'UNLOCKED';
                     }
-                }
-                // (You can add similar conditional logic for other levels if needed)
-            }
-        }, 25);
-    }, 100);
-}
+                }, 25);
+            }, 100);
+        }
     </script>
 </body>
 </html>

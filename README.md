@@ -23,8 +23,8 @@ This project was built strictly for speed, zero-latency loading, and frictionles
 
 
 *   **Steam ID:** [ProXM1](https://steamcommunity.com/id/ProXM1)
-*   **Primary Title:** Marvel Rivals
-*   **Class/Role:** Duelist Main
+*   **Location:** To Be Determined
+*   **Class/Role:** Duelist
 *   **Server Region:** NA-East / Canada
 
 

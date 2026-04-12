@@ -71,16 +71,10 @@
 
 <br />
 
-<div align="center">
-  <a href="https://steamcommunity.com/id/proxm1" target="_blank">
-    <img src="https://img.shields.io/badge/>_JACK_IN-STEAM_NETWORK-1B2838?style=flat-square&logo=steam&logoColor=FFFFFF&labelColor=171A21&color=66C0F4" />
-  </a>
-</div>
+
 
 <br /><br />
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/ProXM1/ProXM1/main/image_2.png" width="160" style="border: 2px solid #00FF41; padding: 5px; background-color: #050505;" />
-</div>
+
 
 # ```

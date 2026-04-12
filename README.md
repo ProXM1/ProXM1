@@ -1,32 +1,86 @@
-# >_PROXM1 // OFFICIAL DOMAIN
+# <p align="center">
+  <img src="https://raw.githubusercontent.com/ProXM1/ProXM1/main/image_0.png" width="100%" alt="Header Banner" style="border-bottom: 2px solid #F96B07;" />
+</p>
 
-![Status: Operational](https://img.shields.io/badge/Status-Operational-00FF41?style=for-the-badge&logo=opslevel&logoColor=obsidian)
-![Deployment: GitHub Pages](https://img.shields.io/badge/Deployment-GitHub_Pages-B026FF?style=for-the-badge&logo=github)
-![Tech: Tailwind CSS](https://img.shields.io/badge/Tech-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+<br />
 
-Welcome to the official frontend repository for **ProXM1**—.
+<div align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Oswald&weight=500&size=24&pause=3000&color=F96B07&center=true&vCenter=true&width=800&lines=Sometimes+you+need+a+little+wishful+thinking+to+keep+on+living.;%22The+fate+of+destruction+is+also+the+joy+of+rebirth.%22;%22Man+fears+the+darkness%2C+and+so+he+scrapes+away+at+the+edges+of+it+with+fire.%22" alt="NGE Quotes" />
+</div>
 
-This repository houses the source code for ProXM1's digital portfolio and community hub. It is designed to be a lightweight, high-converting static single-page application (SPA) that merges a cyberpunk/terminal aesthetic with high-voltage comic book energy.
+<br />
 
-## 📁 Architecture & Features
+<div align="center">
+  <a href="https://discord.com/users/proxm1">
+    <img src="https://lanyard.webs.com/api/proxm1?bg=050505&text=00FF41&mode=compact" alt="Discord Status" />
+  </a>
+</div>
 
-This project was built strictly for speed, zero-latency loading, and frictionless conversion.
+<br />
 
-*   **Zero-Dependency Build:** A pure `index.html` file utilizing CDN-delivered Tailwind CSS for rapid styling. No node modules, no build steps required.
-*   **Terminal Aesthetic:** Custom CSS keyframes handling CRT-monitor scanlines, glitch hover states, and dynamic typewriter effects.
-*   **Chrona-Web Media Grid:** Asymmetrical, comic-panel-inspired layout ready for Twitch iframe embeds and YouTube VOD highlights.
-*   **Deploy-Ready:** Specifically engineered to be hosted on GitHub Pages for 100% free, high-bandwidth hosting.
+<div align="center">
+  <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/dark.png" width="400" alt="divider" style="opacity: 0.3;" />
+</div>
 
-## 🧠 The Persona: ProXM1
+<br />
 
-> *"Synergy isn't a game mechanic. It's an execution standard."*
+<h3 align="center" style="color: #00FF41; font-family: monospace; font-weight: normal; letter-spacing: 2px;">> HARDWARE_TOPOLOGY.sys</h3>
+<p align="center">
+  <img src="https://img.shields.io/badge/OS-CachyOS-000000?style=flat-square&logo=linux&logoColor=FFFFFF&labelColor=0B8268&color=000000" alt="OS" />
+  &nbsp;&nbsp;
+  <img src="https://img.shields.io/badge/CPU-Ryzen_7700X-000000?style=flat-square&logo=amd&logoColor=FFFFFF&labelColor=ED1C24&color=000000" alt="CPU" />
+  &nbsp;&nbsp;
+  <img src="https://img.shields.io/badge/GPU-RX_9700_XT-000000?style=flat-square&logo=amd&logoColor=FFFFFF&labelColor=E0162B&color=000000" alt="GPU" />
+  &nbsp;&nbsp;
+  <img src="https://img.shields.io/badge/RAM-32GB-000000?style=flat-square&logo=corsair&logoColor=000000&labelColor=FEE101&color=000000" alt="RAM" />
+</p>
 
+<br /><br />
 
-*   **Steam ID:** [ProXM1](https://steamcommunity.com/id/ProXM1)
-*   **Location:** To Be Determined
-*   **Class/Role:** Duelist
-*   **Server Region:** NA-East / Canada
+<h3 align="center" style="color: #00FF41; font-family: monospace; font-weight: normal; letter-spacing: 2px;">> STEAM_OPERATIONAL_DATA.sys</h3>
+<div align="center">
+  <a href="https://steamcommunity.com/id/proxm1">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=proxm1&repo=ProXM1&theme=tokyonight&show_owner=true&hide_border=true&title_color=00FF41&text_color=9CA3AF&icon_color=F96B07&bg_color=050505" alt="Steam Stats Placeholder" />
+    </a>
+</div>
 
+<br /><br />
 
----
-`© [CURRENT_YEAR] PROXM1 // ALL SYSTEMS NOMINAL.`
+<h3 align="center" style="color: #00FF41; font-family: monospace; font-weight: normal; letter-spacing: 2px;">> CONTRIBUTION_SNAKE.exe</h3>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ProXM1/ProXM1/output/github-contribution-grid-snake.svg" alt="Snake Animation" />
+</div>
+
+<br /><br />
+
+<h3 align="center" style="color: #00FF41; font-family: monospace; font-weight: normal; letter-spacing: 2px;">> ACTIVE_SIMULATIONS.exe</h3>
+<div align="center">
+  <table border="0" cellspacing="0" cellpadding="0" style="background-color: #050505; border: 1px solid #00FF41; width: 450px;">
+    <tr>
+      <td style="padding: 12px; border-bottom: 1px solid #113311;">
+        <code style="color: #FF8C00; font-family: 'Courier New', Courier, monospace;">[ACTIVE] marvel_rivals.sim // Vanguard_Grid</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 12px;">
+        <code style="color: #4682B4; font-family: 'Courier New', Courier, monospace;">[ACTIVE] morbid_metal.sim // Combat_Analysis</code>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<br />
+
+<div align="center">
+  <a href="https://steamcommunity.com/id/proxm1" target="_blank">
+    <img src="https://img.shields.io/badge/>_JACK_IN-STEAM_NETWORK-1B2838?style=flat-square&logo=steam&logoColor=FFFFFF&labelColor=171A21&color=66C0F4" />
+  </a>
+</div>
+
+<br /><br />
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ProXM1/ProXM1/main/image_2.png" width="160" style="border: 2px solid #00FF41; padding: 5px; background-color: #050505;" />
+</div>
+
+# ```

@@ -11,8 +11,8 @@
 <br />
 
 <div align="center">
-  <a href="https://discord.com/users/proxm1">
-    <img src="https://lanyard.webs.com/api/proxm1?bg=050505&text=00FF41&mode=compact" alt="Discord Status" />
+  <a href="https://discord.com/users/131393542651117568">
+    <img src="https://lanyard.webs.com/api/131393542651117568?bg=050505&text=00FF41&mode=compact" alt="Discord Status" />
   </a>
 </div>
 
@@ -40,8 +40,8 @@
 <h3 align="center" style="color: #00FF41; font-family: monospace; font-weight: normal; letter-spacing: 2px;">> STEAM_OPERATIONAL_DATA.sys</h3>
 <div align="center">
   <a href="https://steamcommunity.com/id/proxm1">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=proxm1&repo=ProXM1&theme=tokyonight&show_owner=true&hide_border=true&title_color=00FF41&text_color=9CA3AF&icon_color=F96B07&bg_color=050505" alt="Steam Stats Placeholder" />
-    </a>
+    <img src="https://studiomeal.herokuapp.com/steam/76561198083896792/dark" alt="Steam Stats" />
+  </a>
 </div>
 
 <br /><br />

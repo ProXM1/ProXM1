@@ -12,7 +12,7 @@
 
 <div align="center">
   <a href="https://discord.com/users/131393542651117568">
-    <img src="https://lanyard.webs.com/api/131393542651117568?bg=050505&text=00FF41&mode=compact" alt="Discord Status" />
+    <img src="https://lanyard.cnrad.dev/api/131393542651117568?theme=dark&bg=050505&animated=true&hideDiscrim=true&borderRadius=5px&idleMessage=SYSTEM_IDLE...&loadingMessage=RECONNECTING..." alt="Discord Presence" />
   </a>
 </div>
 

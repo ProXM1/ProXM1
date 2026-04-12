@@ -53,28 +53,19 @@
 
 <br /><br />
 
-<h3 align="center" style="color: #00FF41; font-family: monospace; font-weight: normal; letter-spacing: 2px;">> ACTIVE_SIMULATIONS.exe</h3>
+<h3 align="center" style="color: #00FF41; font-family: monospace; font-weight: normal; letter-spacing: 2px;">> DAILY_LOG_ENTRY.sh</h3>
 <div align="center">
-  <table border="0" cellspacing="0" cellpadding="0" style="background-color: #050505; border: 1px solid #00FF41; width: 450px;">
+  <table border="0" cellspacing="0" cellpadding="0" style="background-color: #050505; border: 1px solid #00FF41; width: 600px; padding: 20px;">
     <tr>
-      <td style="padding: 12px; border-bottom: 1px solid #113311;">
-        <code style="color: #FF8C00; font-family: 'Courier New', Courier, monospace;">[ACTIVE] marvel_rivals.sim // Vanguard_Grid</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="padding: 12px;">
-        <code style="color: #4682B4; font-family: 'Courier New', Courier, monospace;">[ACTIVE] morbid_metal.sim // Combat_Analysis</code>
+      <td align="center">
+        <img src="https://readme-typing-svg.herokuapp.com?font=Share+Tech+Mono&weight=400&size=20&pause=5000&color=00FF41&center=true&vCenter=true&width=600&lines=%24+fetching+remote+quotes...;%24+accessing+data+stream...;%24+decoding+daily+cipher...;%22The+only+way+to+go+is+forward.%22;%22Precision+beats+power%2C+timing+beats+speed.%22;%22Yesterday+is+history%2C+tomorrow+is+a+mystery.%22" alt="Daily Quote Animation" />
       </td>
     </tr>
   </table>
+  <br />
+  <code style="color: #00FF41;">[ _ ] TERMINAL_IDLE</code>
 </div>
 
-<br />
-
-
-
 <br /><br />
-
-
 
 # ```

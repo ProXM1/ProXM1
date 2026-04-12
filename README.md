@@ -40,7 +40,7 @@
 <h3 align="center" style="color: #00FF41; font-family: monospace; font-weight: normal; letter-spacing: 2px;">> STEAM_OPERATIONAL_DATA.sys</h3>
 <div align="center">
   <a href="https://steamcommunity.com/id/proxm1">
-    <img src="https://github-readme-steam-card.vercel.app/status/?steamid=<76561198083896792>"/>
+    <img src="https://github-readme-steam-card.vercel.app/status/?steamid=76561198083896792"/>
   </a>
 </div>
 
